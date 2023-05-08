@@ -76,6 +76,6 @@ let dotTable = document.querySelectorAll('.dots .dot');
 //Selected Bullet point class naming
 dotTable[0].classList.add('dot_selected');
 
-//Slides variables
+//Slides images and p selectors 
 let image = document.querySelector('.banner-img');
 let tagLine = document.querySelector('#banner p');
