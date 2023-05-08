@@ -19,7 +19,15 @@ const slides = [
 
 //Left arrow eventListener
 document.querySelector('#banner .arrow_left').addEventListener('click', function() {
-	alert('test gauche');
+	if(curent == 0) { //if current index equal 0, do nothing
+	}
+	else { 
+		dotTable[curent].classList.remove('dot_selected'); //else remove the class 'dot_selected' to the current dot and add it to the previous one
+		curent--; //less one curent index number
+		dotTable[curent].classList.add('dot_selected');
+		image.src = "./assets/images/slideshow/" + slides[curent].image; //else change image.src for the curent table index and the key "image"
+		tagLine.innerHTML = slides[curent].tagLine; //else change <p> for the curent table index and the key "tagLine"
+	};
 });
 		
 //Right arrow eventListener
@@ -28,7 +36,7 @@ document.querySelector('#banner .arrow_right').addEventListener('click', functio
 	}
 	else { 
 		dotTable[curent].classList.remove('dot_selected'); //else remove the class 'dot_selected' to the current dot and add it to the next one
-		curent++;
+		curent++; //plus one curent index number
 		dotTable[curent].classList.add('dot_selected');
 		image.src = "./assets/images/slideshow/" + slides[curent].image; //else change image.src for the curent table index and the key "image"
 		tagLine.innerHTML = slides[curent].tagLine; //else change <p> for the curent table index and the key "tagLine"
