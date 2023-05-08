@@ -19,27 +19,37 @@ const slides = [
 
 //Left arrow eventListener
 document.querySelector('#banner .arrow_left').addEventListener('click', function() {
-	if(curent == 0) { //if current index equal 0, do nothing
+	if(curent == 0) { //condition: if current index equal 0, then >>
+		dotTable[curent].classList.remove('dot_selected'); //remove the class 'dot_selected' to the current dot
+		curent = slides.length - 1; //curent is now the last index number
+		dotTable[curent].classList.add('dot_selected'); //add the class 'dot_selected' to the current dot
+		image.src = "./assets/images/slideshow/" + slides[curent].image; //change image.src for the curent table index and the key "image"
+		tagLine.innerHTML = slides[curent].tagLine; //change <p> for the curent table index and the key "tagLine"
 	}
 	else { 
-		dotTable[curent].classList.remove('dot_selected'); //else remove the class 'dot_selected' to the current dot and add it to the previous one
-		curent--; //less one curent index number
-		dotTable[curent].classList.add('dot_selected');
-		image.src = "./assets/images/slideshow/" + slides[curent].image; //else change image.src for the curent table index and the key "image"
-		tagLine.innerHTML = slides[curent].tagLine; //else change <p> for the curent table index and the key "tagLine"
+		dotTable[curent].classList.remove('dot_selected'); //remove the class 'dot_selected' to the current dot
+		curent--; //remove -1 to the curent index
+		dotTable[curent].classList.add('dot_selected'); //add the class 'dot_selected' to the current dot
+		image.src = "./assets/images/slideshow/" + slides[curent].image; //change image.src for the curent table index and the key "image"
+		tagLine.innerHTML = slides[curent].tagLine; //change <p> for the curent table index and the key "tagLine"
 	};
 });
 		
 //Right arrow eventListener
 document.querySelector('#banner .arrow_right').addEventListener('click', function() {
-	if(curent == slides.length - 1) { //if current index equal slides.length -1, do nothing
+	if(curent == slides.length - 1) { //condition: if current index equal slides.length -1, then >>
+		dotTable[curent].classList.remove('dot_selected'); //remove the class 'dot_selected' to the current dot
+		curent = 0; //curent is now the index number 1
+		dotTable[curent].classList.add('dot_selected'); //add the class 'dot_selected' to the current dot
+		image.src = "./assets/images/slideshow/" + slides[curent].image; //change image.src for the curent table index and the key "image"
+		tagLine.innerHTML = slides[curent].tagLine; //change <p> for the curent table index and the key "tagLine"
 	}
 	else { 
-		dotTable[curent].classList.remove('dot_selected'); //else remove the class 'dot_selected' to the current dot and add it to the next one
-		curent++; //plus one curent index number
-		dotTable[curent].classList.add('dot_selected');
-		image.src = "./assets/images/slideshow/" + slides[curent].image; //else change image.src for the curent table index and the key "image"
-		tagLine.innerHTML = slides[curent].tagLine; //else change <p> for the curent table index and the key "tagLine"
+		dotTable[curent].classList.remove('dot_selected'); //remove the class 'dot_selected' to the current dot
+		curent++; //add +1 to the curent index
+		dotTable[curent].classList.add('dot_selected');//add the class 'dot_selected' to the current dot
+		image.src = "./assets/images/slideshow/" + slides[curent].image; //change image.src for the curent table index and the key "image"
+		tagLine.innerHTML = slides[curent].tagLine; //change <p> for the curent table index and the key "tagLine"
 	};
 });
 
