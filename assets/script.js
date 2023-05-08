@@ -17,16 +17,44 @@ const slides = [
 	}
 ]
 
-//Ajout de l'eventListener sur la flèche gauche
-document.querySelector('.arrow_left').addEventListener('click', function() {
-	//Déclaration de la fonction liée à la fèche gauche
+
+
+//Left arrow eventListener
+document.querySelector('#banner .arrow_left').addEventListener('click', function() {
 	alert('test gauche');
 });
 		
-//Ajout de l'eventListener sur la flèche droite
-document.querySelector('.arrow_right').addEventListener('click', function() {
-	//Déclaration de la fonction liée à la fèche droite
-	alert('test droite');
+//Right arrow eventListener
+document.querySelector('#banner .arrow_right').addEventListener('click', function() {
+	if(curent == slides.length - 1) {
+	}
+	else {
+		dotTable[curent].classList.remove('dot_selected');
+		curent++;
+		dotTable[curent].classList.add('dot_selected');
+	};
+	
 });
-		
 
+//Index number one
+let curent = 0;
+
+//Bullet points HTML creation function
+function dotCreation() {
+	//Bullet points container selector
+	let dots = document.querySelector('#banner .dots');
+	//Bullet points div creation
+	let dot = document.createElement('div');
+	//Bullet points class naming
+	dot.classList.add("dot");
+	//Bullet points container attachment
+	dots.appendChild(dot);
+};
+//Bullet points creation loop
+for(let i = 0; i < slides.length; i++){ 
+    dotCreation();
+};
+//Bullet points table
+let dotTable = document.querySelectorAll('.dots .dot');
+//Selected Bullet point class naming
+dotTable[0].classList.add('dot_selected');
