@@ -17,8 +17,6 @@ const slides = [
 	}
 ]
 
-
-
 //Left arrow eventListener
 document.querySelector('#banner .arrow_left').addEventListener('click', function() {
 	alert('test gauche');
@@ -26,14 +24,15 @@ document.querySelector('#banner .arrow_left').addEventListener('click', function
 		
 //Right arrow eventListener
 document.querySelector('#banner .arrow_right').addEventListener('click', function() {
-	if(curent == slides.length - 1) {
+	if(curent == slides.length - 1) { //if current index equal slides.length -1, do nothing
 	}
-	else {
-		dotTable[curent].classList.remove('dot_selected');
+	else { 
+		dotTable[curent].classList.remove('dot_selected'); //else remove the class 'dot_selected' to the current dot and add it to the next one
 		curent++;
 		dotTable[curent].classList.add('dot_selected');
+		image.src = "./assets/images/slideshow/" + slides[curent].image; //else change image.src for the curent table index and the key "image"
+		tagLine.innerHTML = slides[curent].tagLine; //else change <p> for the curent table index and the key "tagLine"
 	};
-	
 });
 
 //Index number one
@@ -51,10 +50,14 @@ function dotCreation() {
 	dots.appendChild(dot);
 };
 //Bullet points creation loop
-for(let i = 0; i < slides.length; i++){ 
+for(let i = 0; i < slides.length; i++){ //i start at 0 ; if i < slides.length ; then add +1 to i
     dotCreation();
 };
 //Bullet points table
 let dotTable = document.querySelectorAll('.dots .dot');
 //Selected Bullet point class naming
 dotTable[0].classList.add('dot_selected');
+
+//Slides variables
+let image = document.querySelector('.banner-img');
+let tagLine = document.querySelector('#banner p');
