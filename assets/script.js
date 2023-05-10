@@ -1,4 +1,4 @@
-const slides = [
+const slides = [ //Slides content array
 	{
 		"image":"slide1.jpg",
 		"tagLine":"Impressions tous formats <span>en boutique et en ligne</span>"
@@ -17,45 +17,6 @@ const slides = [
 	}
 ]
 
-//Left arrow eventListener
-document.querySelector('#banner .arrow_left').addEventListener('click', function() {
-	if(curent == 0) { //condition: if current index equal 0, then >>
-		dotTable[curent].classList.remove('dot_selected'); //remove the class 'dot_selected' to the current dot
-		curent = slides.length - 1; //curent is now the last index number
-		dotTable[curent].classList.add('dot_selected'); //add the class 'dot_selected' to the current dot
-		image.src = "./assets/images/slideshow/" + slides[curent].image; //change image.src for the curent table index and the key "image"
-		tagLine.innerHTML = slides[curent].tagLine; //change <p> for the curent table index and the key "tagLine"
-	}
-	else { 
-		dotTable[curent].classList.remove('dot_selected'); //remove the class 'dot_selected' to the current dot
-		curent--; //remove -1 to the curent index
-		dotTable[curent].classList.add('dot_selected'); //add the class 'dot_selected' to the current dot
-		image.src = "./assets/images/slideshow/" + slides[curent].image; //change image.src for the curent table index and the key "image"
-		tagLine.innerHTML = slides[curent].tagLine; //change <p> for the curent table index and the key "tagLine"
-	};
-});
-		
-//Right arrow eventListener
-document.querySelector('#banner .arrow_right').addEventListener('click', function() {
-	if(curent == slides.length - 1) { //condition: if current index equal slides.length -1, then >>
-		dotTable[curent].classList.remove('dot_selected'); //remove the class 'dot_selected' to the current dot
-		curent = 0; //curent is now the index number 1
-		dotTable[curent].classList.add('dot_selected'); //add the class 'dot_selected' to the current dot
-		image.src = "./assets/images/slideshow/" + slides[curent].image; //change image.src for the curent table index and the key "image"
-		tagLine.innerHTML = slides[curent].tagLine; //change <p> for the curent table index and the key "tagLine"
-	}
-	else { 
-		dotTable[curent].classList.remove('dot_selected'); //remove the class 'dot_selected' to the current dot
-		curent++; //add +1 to the curent index
-		dotTable[curent].classList.add('dot_selected');//add the class 'dot_selected' to the current dot
-		image.src = "./assets/images/slideshow/" + slides[curent].image; //change image.src for the curent table index and the key "image"
-		tagLine.innerHTML = slides[curent].tagLine; //change <p> for the curent table index and the key "tagLine"
-	};
-});
-
-//Index number one
-let curent = 0;
-
 //Bullet points HTML creation function
 function dotCreation() {
 	//Bullet points container selector
@@ -71,11 +32,53 @@ function dotCreation() {
 for(let i = 0; i < slides.length; i++){ //i start at 0 ; if i < slides.length ; then add +1 to i
     dotCreation();
 };
-//Bullet points table
+
+//Variables used for arrows EventListener functions 
+
+//Index number one
+let curent = 0;
+
+//Bullet points array creation
 let dotTable = document.querySelectorAll('.dots .dot');
-//Selected Bullet point class naming
-dotTable[0].classList.add('dot_selected');
+//Selected Bullet point class naming (on load)
+dotTable[curent].classList.add('dot_selected');
 
 //Slides images and p selectors 
 let image = document.querySelector('.banner-img');
 let tagLine = document.querySelector('#banner p');
+
+//Right arrow eventListener
+document.querySelector('#banner .arrow_right').addEventListener('click', function() {
+	if(curent == slides.length - 1) { //condition: if current index equal slides.length -1, then >>
+		dotTable[curent].classList.remove('dot_selected'); //remove the class 'dot_selected' from the current dot
+		curent = 0; //curent is now the index number 1
+		dotTable[curent].classList.add('dot_selected'); //add the class 'dot_selected' to the current dot
+		image.src = "./assets/images/slideshow/" + slides[curent].image; //replace image.src with the curent table index and the key "image" 
+		tagLine.innerHTML = slides[curent].tagLine; //replace <p> with the curent table index and the key "tagLine"
+	}
+	else { 
+		dotTable[curent].classList.remove('dot_selected'); //remove the class 'dot_selected' from the current dot
+		curent++; //add +1 to the curent index
+		dotTable[curent].classList.add('dot_selected');//add the class 'dot_selected' to the current dot
+		image.src = "./assets/images/slideshow/" + slides[curent].image; //replace image.src with the curent table index and the key "image"
+		tagLine.innerHTML = slides[curent].tagLine; //replace <p> with the curent table index and the key "tagLine"
+	};
+});
+
+//Left arrow eventListener
+document.querySelector('#banner .arrow_left').addEventListener('click', function() {
+	if(curent == 0) { //condition: if current index equal 0, then >>
+		dotTable[curent].classList.remove('dot_selected'); //remove the class 'dot_selected' from the current dot
+		curent = slides.length - 1; //curent is now the last index number
+		dotTable[curent].classList.add('dot_selected'); //add the class 'dot_selected' to the current dot
+		image.src = "./assets/images/slideshow/" + slides[curent].image; //replace image.src with the curent table index and the key "image"
+		tagLine.innerHTML = slides[curent].tagLine; //replace <p> with the curent table index and the key "tagLine"
+	}
+	else { 
+		dotTable[curent].classList.remove('dot_selected'); //remove the class 'dot_selected' from the current dot
+		curent--; //remove -1 to the curent index
+		dotTable[curent].classList.add('dot_selected'); //add the class 'dot_selected' to the current dot
+		image.src = "./assets/images/slideshow/" + slides[curent].image; //replace image.src with the curent table index and the key "image"
+		tagLine.innerHTML = slides[curent].tagLine; //replace <p> with the curent table index and the key "tagLine"
+	};
+});
