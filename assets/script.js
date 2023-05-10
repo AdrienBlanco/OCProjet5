@@ -50,7 +50,7 @@ let tagLine = document.querySelector('#banner p');
 //Right and left function
 function RightLeft(index) {
 	dotList[current].classList.remove('dot_selected'); //remove the class 'dot_selected' from the current dot
-	current = index; //current is index value
+	current = index; //current is now index value
 	dotList[current].classList.add('dot_selected'); //add the class 'dot_selected' to the current dot
 	image.src = "./assets/images/slideshow/" + slides[current].image; //replace image.src with the current table index and the key "image" 
 	tagLine.innerHTML = slides[current].tagLine; //replace <p> with the current table index and the key "tagLine"
