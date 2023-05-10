@@ -48,7 +48,7 @@ let image = document.querySelector('.banner-img');
 let tagLine = document.querySelector('#banner p');
 
 //Right and left function
-function RightLeft(index) {
+function carousel(index) {
 	dotList[current].classList.remove('dot_selected'); //remove the class 'dot_selected' from the current dot
 	current = index; //current is now index value
 	dotList[current].classList.add('dot_selected'); //add the class 'dot_selected' to the current dot
@@ -59,19 +59,19 @@ function RightLeft(index) {
 //Right arrow eventListener
 document.querySelector('#banner .arrow_right').addEventListener('click', function() {
 	if(current == slides.length - 1) { //condition: if current index equal slides.length -1, then >>
-		RightLeft(0) //index becomes 0
+		carousel(0) //index becomes 0
 	}
 	else { 
-		RightLeft(current + 1) //index becomes current index +1
+		carousel(current + 1) //index becomes current index +1
 	};
 });
 
 //Left arrow eventListener
 document.querySelector('#banner .arrow_left').addEventListener('click', function() {
 	if(current == 0) { //condition: if current index equal 0, then >>
-		RightLeft(slides.length - 1) //index becomes slides.length -1
+		carousel(slides.length - 1) //index becomes slides.length -1
 	}
 	else { 
-		RightLeft(current - 1) //index becomes current index -1
+		carousel(current - 1) //index becomes current index -1
 	};
 });
