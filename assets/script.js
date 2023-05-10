@@ -47,7 +47,7 @@ dotList[current].classList.add('dot_selected');
 let image = document.querySelector('.banner-img');
 let tagLine = document.querySelector('#banner p');
 
-//Right and left function
+//Carousel function
 function carousel(index) {
 	dotList[current].classList.remove('dot_selected'); //remove the class 'dot_selected' from the current dot
 	current = index; //current is now index value
